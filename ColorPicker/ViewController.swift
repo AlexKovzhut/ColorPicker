@@ -11,17 +11,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var mainColorView: UIView!
     
-    @IBOutlet weak var redColorTextField: UITextField!
-    @IBOutlet weak var greenColorTextField: UITextField!
-    @IBOutlet weak var blueColorTextField: UITextField!
+    @IBOutlet weak var redColorLabel: UILabel!
+    @IBOutlet weak var greenColorLabel: UILabel!
+    @IBOutlet weak var blueColorLabel: UILabel!
     
     @IBOutlet weak var redColorSlider: UISlider!
     @IBOutlet weak var greenColorSlider: UISlider!
     @IBOutlet weak var blueColorSlider: UISlider!
-    @IBOutlet weak var claritySlider: UISlider!
-    
-    @IBOutlet weak var resetBitton: UIButton!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,37 +29,20 @@ class ViewController: UIViewController {
         changeMainColorView()
     }
     
-    @IBAction func resetPressedButton(_ sender: UIButton) {
-        resetAllParameters()
-    }
-    
     func changeMainColorView() {
+        
         let redScoreField = CGFloat(redColorSlider.value)
-        redColorTextField.text = "Red \(String(format: "%0.2f", redScoreField))"
+        redColorLabel.text = "\(String(format: "%0.2f", redScoreField))"
         
         let greenScoreField = CGFloat(greenColorSlider.value)
-        greenColorTextField.text = "Green \(String(format: "%0.2f", greenScoreField))"
+        greenColorLabel.text = "\(String(format: "%0.2f", greenScoreField))"
         
         let blueScoreField = CGFloat(blueColorSlider.value)
-        blueColorTextField.text = "Blue \(String(format: "%0.2f", blueScoreField))"
-        
-        let clarity = CGFloat(claritySlider.value)
+        blueColorLabel.text = "\(String(format: "%0.2f", blueScoreField))"
 
-        let colorMainView = UIColor(red: redScoreField, green: greenScoreField, blue: blueScoreField, alpha: clarity)
+        let colorMainView = UIColor(red: redScoreField, green: greenScoreField, blue: blueScoreField, alpha: 1)
         mainColorView.backgroundColor = colorMainView
     }
-    
-    func resetAllParameters() {
-        mainColorView.backgroundColor = UIColor.black
-        
-        redColorTextField.text = "Red 0.00"
-        greenColorTextField.text = "Green 0.00"
-        blueColorTextField.text = "Blue 0.00"
-        
-        redColorSlider.value = 0
-        greenColorSlider.value = 0
-        blueColorSlider.value = 0
-        claritySlider.value = 1
-    }
+
 }
 
